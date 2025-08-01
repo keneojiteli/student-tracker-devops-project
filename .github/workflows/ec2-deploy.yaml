@@ -35,8 +35,8 @@ jobs:
           echo "VAULT_ROLE_ID=${{ secrets.VAULT_ROLE_ID }}" >> $GITHUB_ENV
           echo "VAULT_SECRET_ID=${{ secrets.VAULT_SECRET_ID }}" >> $GITHUB_ENV
 
-      - name: Run app with uvicorn
-        run: |
-          source venv/bin/activate
-          uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload 
+    #  - name: Run app with uvicorn
+    #    run: |
+     #     source venv/bin/activate
+      #    uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload 
 
