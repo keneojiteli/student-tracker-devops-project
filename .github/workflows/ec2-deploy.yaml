@@ -1,0 +1,50 @@
+name: "Deploy student tracker application to EC2"
+on: 
+  push:
+    branches: ["main"]
+ 
+jobs:
+  build:
+    name: build tracker app
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip --version
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          source venv/bin/activate
+          pytest
+
+      - name: Add vault credentials
+        run: |
+          export VAULT_ADDR = ${{ secrets.VAULT_ADDR }}
+          export VAULT_ROLE_ID = ${{ secrets.VAULT_ROLE_ID }}
+          export VAULT_SECRET_ID = ${{ secrets.VAULT_SECRET_ID }}
+
+      - name: Run app with uvicorn
+        run: |
+          source venv/bin/activate
+          uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload 
+ 
+ /* deploy:
+    name: deploy app to EC2 instance
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4 */
