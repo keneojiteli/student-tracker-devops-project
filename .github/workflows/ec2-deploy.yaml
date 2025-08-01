@@ -28,9 +28,9 @@ jobs:
 
       - name: Add vault credentials
         run: |
-          export VAULT_ADDR = ${{ secrets.VAULT_ADDR }}
-          export VAULT_ROLE_ID = ${{ secrets.VAULT_ROLE_ID }}
-          export VAULT_SECRET_ID = ${{ secrets.VAULT_SECRET_ID }}
+          export VAULT_ADDR=${{ secrets.VAULT_ADDR }}
+          export VAULT_ROLE_ID=${{ secrets.VAULT_ROLE_ID }}
+          export VAULT_SECRET_ID=${{ secrets.VAULT_SECRET_ID }}
 
       - name: Run app with uvicorn
         run: |
