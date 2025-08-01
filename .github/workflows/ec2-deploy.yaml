@@ -28,9 +28,12 @@ jobs:
 
       - name: Add vault credentials
         run: |
-          export VAULT_ADDR=${{ secrets.VAULT_ADDR }}
-          export VAULT_ROLE_ID=${{ secrets.VAULT_ROLE_ID }}
-          export VAULT_SECRET_ID=${{ secrets.VAULT_SECRET_ID }}
+          # export VAULT_ADDR=${{ secrets.VAULT_ADDR }}
+          #export VAULT_ROLE_ID=${{ secrets.VAULT_ROLE_ID }}
+          #export VAULT_SECRET_ID=${{ secrets.VAULT_SECRET_ID }}
+          echo "VAULT_ADDR=${{ secrets.VAULT_ADDR }}" >> $GITHUB_ENV
+          echo "VAULT_ROLE_ID=${{ secrets.VAULT_ROLE_ID }}" >> $GITHUB_ENV
+          echo "VAULT_SECRET_ID=${{ secrets.VAULT_SECRET_ID }}" >> $GITHUB_ENV
 
       - name: Run app with uvicorn
         run: |
