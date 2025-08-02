@@ -68,7 +68,10 @@ jobs:
           export VAULT_ADDR="${{ secrets.VAULT_ADDR }}"
           export VAULT_ROLE_ID="${{ secrets.VAULT_ROLE_ID }}"
           export VAULT_SECRET_ID="${{ secrets.VAULT_SECRET_ID }}"
-          nohup uvicorn app.main:app --host 0.0.0.0 --port 8000 &
+          #nohup uvicorn app.main:app --host 0.0.0.0 --port 8000 &
+          nohup uvicorn app.main:app --host 0.0.0.0 --port 8080 > output.log 2>&1 &
+          exit 0
+          EOF
 
           #echo "VAULT_ADDR=${{ secrets.VAULT_ADDR }}" >> $GITHUB_ENV
           #echo "VAULT_ROLE_ID=${{ secrets.VAULT_ROLE_ID }}" >> $GITHUB_ENV
