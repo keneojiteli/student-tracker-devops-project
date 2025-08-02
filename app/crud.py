@@ -23,3 +23,12 @@ async def update_student_progress(name: str, week: str, status: str):
 
 async def count_students():
     return await student_collection.count_documents({})
+
+
+# get all students
+async def get_all_students():
+    students_cursor = student_collection.find({})
+    students = []
+    async for student in students_cursor:
+        students.append(student)
+    return students
