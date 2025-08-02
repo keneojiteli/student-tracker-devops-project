@@ -65,6 +65,9 @@ jobs:
           python3 -m venv venv
           source venv/bin/activate
           pip install -r requirements.txt
+          echo "VAULT_ADDR=${{ secrets.VAULT_ADDR }}" >> $GITHUB_ENV
+          echo "VAULT_ROLE_ID=${{ secrets.VAULT_ROLE_ID }}" >> $GITHUB_ENV
+          echo "VAULT_SECRET_ID=${{ secrets.VAULT_SECRET_ID }}" >> $GITHUB_ENV
          # python -m pip install --upgrade pip
           #pip --version
           #python -m venv venv
