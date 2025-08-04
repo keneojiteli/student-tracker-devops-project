@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.deployment.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.deployment.name }}
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.deployment.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.deployment.name }}
+    spec:
+      containers:
+      - name:  {{ .Values.deployment.name }}
+        image: {{ .Values.deployment.image }}:{{ .Values.deployment.tag }}  
+        ports:
+        - containerPort: {{ .Values.deployment.containerPort }}
+        env:
+        - name: VAULT_ADDR
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.secret.name }}
+              key: VAULT_ADDR
+        - name: VAULT_SECRET_ID
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.secret.name }}
+              key: VAULT_SECRET_ID
+        - name: VAULT_ROLE_ID
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.secret.name }}
+              key: VAULT_ROLE_ID
+        resources:
+          requests:
+            cpu: {{ .Values.deployment.resources.requests.cpu | quote }}
+            memory: {{ .Values.deployment.resources.requests.memory | quote }}
+          limits:
+            cpu: {{ .Values.deployment.resources.limits.cpu | quote }}
+            memory: {{ .Values.deployment.resources.limits.memory | quote }}

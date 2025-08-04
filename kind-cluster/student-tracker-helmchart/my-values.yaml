@@ -1,0 +1,41 @@
+appName: student-tracker-app
+
+namespace: my-app
+
+secret:
+  name: vault-secrets
+  VAULT_ADDR: "<update_with_ur_value>"
+  VAULT_ROLE_ID: "<update_with_ur_value>"
+  VAULT_SECRET_ID: "<update_with_ur_value>"
+
+
+
+deployment:
+  name: my-app
+  replicas: 2
+  image: keneojiteli/student-tracker # update with your docker image
+  tag: latest
+  containerPort: 8000
+  resources:
+    requests:
+       cpu: "100m"
+       memory: "128Mi"
+    limits:
+       cpu: "500m"
+       memory: "512Mi"
+
+
+service:
+  name: my-app-service
+  protocol: TCP
+  port: 80
+  targetPort: 8000
+
+
+ingress:
+  name: my-app-ingress
+  ingressClassName: nginx
+  host: ec2-3-80-25-102.compute-1.amazonaws.com # update with your DNS
+  path: /
+
+
