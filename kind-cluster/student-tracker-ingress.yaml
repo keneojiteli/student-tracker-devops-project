@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: ec2-18-215-150-4.compute-1.amazonaws.com  # Replace with your EC2's public DNS 
+  - host: ec2-54-89-248-137.compute-1.amazonaws.com # Replace with your EC2's public DNS 
     http:
       paths:
       - path: /
