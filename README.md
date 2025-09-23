@@ -8,9 +8,11 @@ A simple FastAPI web application for registering students and tracking their wee
 - Simple endpoints for registration, status check, and progress update.
 
 ## 📦 Prerequisites
-- Python 3.10+
+- Python 3.10+ & Pip  
 - Git
 - MongoDB Atlas account (to get your connection string)
+- Docker 
+- Kubernetes (kubectl, kind) 
 
 ---
 
@@ -29,11 +31,13 @@ source venv/bin/activate  # On Windows use: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 3.Db Conenctions
-- navigate to app/main and update vault ip :
+### 3.Db Connections
+- navigate to app/main and update vault IP:
 
-```export VAULT_ADDR=
-   export VAULT_TOKEN=
+```
+   export VAULT_ADDR=""
+   export VAULT_ROLE_ID=""
+   export VAULT_SECRET_ID="
 ```
 
 ### 4. Run the Application Locally
@@ -48,12 +52,12 @@ Visit `http://vmip:8000` to see your app in action.
 
 ### 1. Build Docker Image
 ```bash
-docker build -t student-tracker .
+docker build -t <image-name> .
 ```
 
 ### 2. Run Docker Container
 ```bash
-docker run --env-file .env -p 8000:8000 student-tracker
+docker run --env-file .env -p 8000:8000 <image-name>
 ```
 
 ### 3. Push to Docker Hub
@@ -80,16 +84,34 @@ docker push your-dockerhub-username/student-tracker
 
 ---
 
-## 🌐 Deploying to Cloud (Optional)
+<!--## 🌐 Deploying to Cloud (Optional)
 You can deploy the app on platforms like:
 - Render
 - Railway
 - Fly.io
 - Azure App Service
-- Elastic Beanstalk or more
+- Elastic Beanstalk or more-->
+
+---
+## Cloud Native Project Schedule
+
+| Week | Topic                                          | Learning Goals                                    | Hands-on Project                                            |
+| ---- | ---------------------------------------------- | ------------------------------------------------- | ----------------------------------------------------------- |
+| 1    | **Intro to Cloud Native & Environment Setup**  | CNCF, containers, microservices, what we'll build | Set up cloud-based workstation, install Docker, Git, Python |
+| 2    | **Containerization with Docker**               | Dockerfile, build/push/run containers             | Containerize FastAPI app, push to DockerHub                 |
+| 3    | **Intro to Kubernetes with Kind**              | Pods, Services, Deployments, kubeconfig           | Install Kind, deploy app on local cluster                   |
+| 4    | **Helm Basics & Chart Templates**              | Helm chart structure, values, reuse               | Create Helm chart for app, deploy with Helm                 |
+| 5    | **Kubernetes Services & Ingress**              | LoadBalancer, NodePort, Ingress Controller        | Add Ingress to access app externally (e.g., NGINX Ingress)  |
+| 6    | **GitHub Actions for CI/CD**                   | Docker build & Helm release pipeline              | Set up Actions to build/push image & update Helm chart      |
+| 7    | **GitOps with ArgoCD**                         | GitOps concepts, ArgoCD installation              | Install ArgoCD on Kind, sync Helm app from GitHub           |
+| 8    | **App Configs, Secrets, and Envs**             | K8s secrets/configmaps, secure deployment         | Refactor app to use secrets/configmaps, update Helm         |
+| 9    | **Monitoring with Prometheus & Grafana**       | Metrics, dashboards, K8s monitoring stack         | Install Prometheus/Grafana with Helm, monitor app health    |
+| 10   | **Logging & Observability with Loki**          | Collect app logs, visualize in Grafana            | Install Loki, tail app logs in Grafana                      |
+| 11   | **Scaling, Resource Limits, and Auto-healing** | HPA, readiness/liveness probes                    | Add CPU/memory limits, HPA for app                          |
+| 12   | **Capstone Review & Portfolio Setup**          | Recap full pipeline, deploy final version         | Students demo full CI/CD + GitOps + Observability setup     |
 
 
-## 👩🏽‍💻 Built for the Cloud Native Series by Chisom
+<!--## 👩🏽‍💻 Built for the Cloud Native Series by Chisom
 This project is used for learning cloud-native tools and Hands-on Project.
 
-Feel free to fork and extend it!
+Feel free to fork and extend it! ->
