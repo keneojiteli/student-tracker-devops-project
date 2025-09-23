@@ -92,7 +92,62 @@ You can deploy the app on platforms like:
 - Azure App Service
 - Elastic Beanstalk or more-->
 
----
+## 📁 **File Structure**
+```
+student-tracker-devops-project/
+├── .github/                        # GitHub configuration
+│   └── workflows/                  # GitHub Actions workflows
+│       └── ec2-deploy.yaml          # CI/CD pipeline for build, push, and deploy
+│
+├── app/                            # Application source code
+│   ├── __init__.py                 # Marks directory as a Python package
+│   ├── crud.py                     # CRUD operations for MongoDB
+│   ├── database.py                 # MongoDB database connection setup
+│   ├── main.py                     # FastAPI app entry point
+│   ├── models.py                   # Pydantic models for validation
+│   ├── routes.py                   # API route definitions
+│       ├── register.py             # Register new student
+|       ├── status.py               # Check project status
+|       ├── update.py               # Update status
+│
+├── k8s-manifest/                   # Raw Kubernetes manifests (non-Helm)
+|   ├── myapp.yaml                  # Sample pod manifest
+|   ├── student-tracker-ingress.yaml                # Ingress definition
+│   ├── student-tracker.yaml             # Deployment/service for app
+│   ├── vault-secret.yaml                 # Secrets definition
+│
+├── kind-cluster-config/                   # Kind cluster config
+|   ├── install-kind.sh                  # Script to install kind & kubectl
+|   ├── kind-config.yaml                # Install k8s kind cluster
+|
+├── charts/                         # Helm charts for Kubernetes
+│   └── student-tracker-chart/            # Custom Helm chart for the app
+│       ├── Chart.yaml              # Chart metadata
+│       ├── values.yaml             # Default configuration values
+│       ├── my-values.yaml          # Custom environment overrides
+│       ├── templates/              # Kubernetes manifests
+│       │   ├── deployment.yaml     # Deployment configuration for app
+│       │   ├── ingress.yaml        # Ingress rules for external access
+│       │   ├── secret.yaml         # Secrets for app configuration
+│       │   ├── service.yaml        # Service definition for networking
+│       │   ├── serviceaccount.yaml # Service account definition
+│       │   └── _helpers.tpl        # Template helper functions
+|
+├── templates/                    # html templates
+|   ├── admin.html                 # UI for admin page
+|   ├── index.html                 # UI for app's entrypoint
+│   ├── progress.html              # UI for students' progress
+│   ├── register.html              # UI for registration
+│   ├── update.html                # UI for progress update 
+│
+├── .dockerignore                   # Ignore files when building Docker image
+├── .gitignore                      # Git ignore rules
+├── Dockerfile                      # Docker build instructions
+├── README.md                       # Project documentation
+├── requirements.txt                 # Python dependencies
+```
+
+
 ## Cloud Native Project Schedule
 
 | Week | Topic                                          | Learning Goals                                    | Hands-on Project                                            |
