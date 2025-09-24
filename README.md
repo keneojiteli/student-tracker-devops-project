@@ -166,6 +166,13 @@ student-tracker-devops-project/
 | 12   | **Capstone Review & Portfolio Setup**          | Recap full pipeline, deploy final version         | Students demo full CI/CD + GitOps + Observability setup     |
 
 
+---
+## Project Walkthrough
+Read on [Dev.to](https://dev.to/keneojiteli/building-and-deploying-a-cloud-native-fastapi-student-tracker-app-with-mongodb-kubernetes-and-1m8) and [Hashnode](https://keneojiteli.hashnode.dev/full-stack-devops-project-deploying-a-fastapi-and-mongodb-app-with-docker-kubernetes-gitops-and-observability)
+
+---
+## Continuous Delivery & Monitoring
+[Repository URL](https://github.com/keneojiteli/student-tracker-app-with-gitops-and-monitoring)
 <!--## 👩🏽‍💻 Built for the Cloud Native Series by Chisom
 This project is used for learning cloud-native tools and Hands-on Project.
 
