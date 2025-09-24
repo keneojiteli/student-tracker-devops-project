@@ -172,7 +172,7 @@ Read on [Dev.to](https://dev.to/keneojiteli/building-and-deploying-a-cloud-nativ
 
 ---
 ## Continuous Delivery & Monitoring
-[Repository URL](https://github.com/keneojiteli/student-tracker-app-with-gitops-and-monitoring)
+Repository URL: [repo](https://github.com/keneojiteli/student-tracker-app-with-gitops-and-monitoring)
 <!--## 👩🏽‍💻 Built for the Cloud Native Series by Chisom
 This project is used for learning cloud-native tools and Hands-on Project.
 
